@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Trust Signals, Not Actions: Soft-Constraint RL from Imperfect Interventions">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trust Signals, Not Actions: Soft-Constraint RL from Imperfect Interventions</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ 
+  <script src="./static/js/jquerymin351.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    .author-block {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Trust Signals, Not Actions: Soft-Constraint RL from Imperfect Interventions </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block" style="font-size: 100%;"><a href="https://sorlm.github.io/" target="_blank" style="color: orange !important; text-decoration: none;">anonymous</a>
+              </span>
+              <div class="is-size-6 publication-authors"> 
+                <span class="author-block"></span>         
+              </div>
+            </div>
+            <div style="margin-top: 10px; margin-bottom: 20px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="single-task-1">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Human-in-the-loop reinforcement learning (HIL-RL) enables robots to learn policies with gradually decreasing human interventions, even under extremely sparse feedback. However, to improve sample efficiency, prior methods typically rely on two assumptions: (1) intervention actions are superior to the current policy and thus can be used for behavior cloning; and (2) task-specific hard constraints can be imposed during exploration. These assumptions often fail in real-world manipulation tasks, where perfect interventions and handcrafted constraints are not scalable. To address these challenges, we shift the focus from <strong><em>what</em></strong> the intervention action is to <strong><em>when</em></strong> the intervention occurs. In this paper, we propose <strong>SoRLM</strong>, a soft-constrained HIL-RL method that employs state-wise Lagrange multipliers. Specifically, <strong>SoRLM</strong> learns an intervention Q-function that estimates the expected future frequency of interventions and optimizes the policy to minimize reliance on them. A learnable, state-dependent Lagrange multiplier adaptively balances task reward maximization with intervention minimization. To evaluate <strong>SoRLM</strong> and enable fair comparison, we introduce the first HIL benchmark spanning four diverse robot manipulation tasks. Experimental results show that <strong>SoRLM</strong> improves success rates on long horizon task by 50% over the prior state-of-the-art method RLIF, and achieves up to 40% higher recovery success rates compared with the popular baseline HG-Dagger when recovering from failures. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="container is-max-desktop" style="padding-bottom: 0;">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Method</h2>
+              <div class="hero-body">
+                <div class="columns">
+                  <div class="column">
+                    <img src="./static/videos/control_keyboard.gif" class="img-responsive" style="width: 100%; height: 320px; object-fit: contain;">
+                  </div>
+                  <div class="column">
+                    <img src="./static/images/model.png" class="img-responsive" style="width: 100%; height: 320px; object-fit: contain;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiment  -->
+      <div class="container is-max-desktop" style="padding-top: 0;">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Experiments</h2>
+          <h3 class="title is-5" style="margin-top: 10px; margin-bottom: 10px;">Training</h3>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/pick_cube.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Pick Cube</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/arrange_box.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Arrange Box</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/cabinet.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Open Cabinet</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/rope.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Straighten Rope</b></p>
+            </div>
+          </div>
+          <br>
+          <br>
+          <h3 class="title is-5" style="margin-top: 20px; margin-bottom: 10px;">Testing</h3>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/pick_cube_test.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Pick Cube</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/arrange_box_test.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Arrange Box</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/cabinet_test.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Open Cabinet</b></p>
+            </div>
+            <div class="column has-text-centered">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+                <source src="./static/videos/rope_test.mp4" type="video/mp4">
+              </video>
+              <p style="font-size: 125%"><b>Straighten Rope</b></p>
+            </div>
+          </div>
+          <br>
+          <br>
+          <h2 class="title is-4">Experimental Results</h2>
+          <br>
+          <div class="yush-div-center">
+            <img src="./static/images/sim_experiments.png" class="img-responsive" style="width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="demo">
+    <div class="container is-max-desktop">
+      <!-- Experiment  -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Conclusion</h2>
+          <!-- Experiment  -->
+          <p>
+            Real-world reinforcement learning enables robots to improve policies from experience with human assistance, yet safety and efficiency remain major bottlenecks.
+            In this work, we propose <strong>SoRLM</strong>, a soft-constrained RL framework for efficient robot manipulation under sparse rewards, guided by human interventions. <strong>SoRLM</strong> learns a state-wise Lagrange multiplier network to dynamically balance task rewards and intervention penalties. We further provide theoretical analysis of how imperfect intervention actions and signals affect policy improvement, offering insights into online learning from experience. To facilitate fair and reproducible evaluation, we introduce the first Human-in-the-Loop Robot Manipulation Benchmark (<strong>HIL-RM</strong>), which includes four challenging sparse-reward manipulation tasks. Experimental results show that <em>leveraging intervention signals can enable policies to surpass the intervention policy and achieve stronger recovery performance.</em> We will release the benchmark, checkpoints, and LeRobot-based code to support the embodied AI community future research.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              The website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+              and <a href="https://eureka-research.github.io/">Eureka</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
