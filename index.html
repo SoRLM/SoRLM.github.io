@@ -68,7 +68,7 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
+          <div class="content has-text-justified abstract-box">
             <p>
               Human-in-the-loop reinforcement learning (HIL-RL) enables robots to learn policies with gradually decreasing human interventions, even under extremely sparse feedback. However, to improve sample efficiency, prior methods typically rely on two assumptions: (1) intervention actions are superior to the current policy and thus can be used for behavior cloning; and (2) task-specific hard constraints can be imposed during exploration. These assumptions often fail in real-world manipulation tasks, where perfect interventions and handcrafted constraints are not scalable. To address these challenges, we shift the focus from <strong><em>what</em></strong> the intervention action is to <strong><em>when</em></strong> the intervention occurs. In this paper, we propose <strong>SoRLM</strong>, a soft-constrained HIL-RL method that employs state-wise Lagrange multipliers. Specifically, <strong>SoRLM</strong> learns an intervention Q-function that estimates the expected future frequency of interventions and optimizes the policy to minimize reliance on them. A learnable, state-dependent Lagrange multiplier adaptively balances task reward maximization with intervention minimization. To evaluate <strong>SoRLM</strong> and enable fair comparison, we introduce the first HIL benchmark spanning four diverse robot manipulation tasks. Experimental results show that <strong>SoRLM</strong> improves success rates on long horizon task by 50% over the prior state-of-the-art method RLIF, and achieves up to 40% higher recovery success rates compared with the popular baseline HG-Dagger when recovering from failures. 
             </p>
@@ -81,16 +81,20 @@
           <div class="column is-full-width">
             <h2 class="title is-3">Method</h2>
             <h3 class="title is-5" style="margin-top: 10px; margin-bottom: 8px;">Human Intervention.</h3>
-            <p style="margin-bottom: 0.5rem;">Pressing the space bar triggers human intervention. In the illustration, <span style="color: red;">red</span> indicates active human intervention, while <span style="color: green;">green</span> denotes autonomous robot behavior.</p>
+            <p style="margin-bottom: 1rem;">Pressing the space bar triggers human intervention. In the illustration, <span style="color: #e74c3c;">red</span> indicates active human intervention, while <span style="color: #27ae60;">green</span> denotes autonomous robot behavior.</p>
               <div class="hero-body" style="padding-top: 0;">
                 <div class="columns">
                   <div class="column has-text-centered">
-                    <img src="./static/videos/control_keyboard.gif" class="img-responsive" style="width: 90%; height: 320px; object-fit: contain;">
-                    <p style="font-size: 125%; margin-top: 8px;"><b>Human intervention process</b></p>
+                    <div class="media-card" style="max-width: 100%; margin: 0 auto;">
+                      <img src="./static/videos/control_keyboard.gif" class="img-responsive" style="width: 90%; height: 320px; object-fit: contain; margin: 0 auto;">
+                      <p class="caption" style="font-size: 125%; margin-top: 0; padding-top: 0;"><b>Human intervention process</b></p>
+                    </div>
                   </div>
                   <div class="column has-text-centered">
-                    <img src="./static/images/model.png" class="img-responsive" style="width: 100%; height: 320px; object-fit: contain;">
-                    <p style="font-size: 125%; margin-top: 8px;"><b>SoRLM framework</b></p>
+                    <div class="media-card" style="max-width: 100%; margin: 0 auto;">
+                      <img src="./static/images/model.png" class="img-responsive" style="width: 100%; height: 320px; object-fit: contain;">
+                      <p class="caption" style="font-size: 125%; margin-top: 0; padding-top: 0;"><b>SoRLM framework</b></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -106,66 +110,107 @@
             <h2 class="title is-3">Experiments</h2>
           <h3 class="title is-5" style="margin-top: 10px; margin-bottom: 10px;">Training</h3>
           <div class="columns">
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/pick_cube.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Pick Cube</b></p>
+              <p class="caption" style="font-size: 125%"><b>Pick Cube</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/arrange_box.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Arrange Box</b></p>
+              <p class="caption" style="font-size: 125%"><b>Arrange Box</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/cabinet.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Open Cabinet</b></p>
+              <p class="caption" style="font-size: 125%"><b>Open Cabinet</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/rope.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Straighten Rope</b></p>
+              <p class="caption" style="font-size: 125%"><b>Straighten Rope</b></p>
             </div>
           </div>
           <br>
-          <br>
-          <h3 class="title is-5" style="margin-top: 20px; margin-bottom: 10px;">Testing</h3>
+          <h3 class="title is-5" style="margin-top: 16px; margin-bottom: 10px;">Testing</h3>
           <div class="columns">
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/pick_cube_test.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Pick Cube</b></p>
+              <p class="caption" style="font-size: 125%"><b>Pick Cube</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/arrange_box_test.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Arrange Box</b></p>
+              <p class="caption" style="font-size: 125%"><b>Arrange Box</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/cabinet_test.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Open Cabinet</b></p>
+              <p class="caption" style="font-size: 125%"><b>Open Cabinet</b></p>
             </div>
-            <div class="column has-text-centered">
-              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 5px;">
+            <div class="column has-text-centered exp-video-wrapper">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 12px;">
                 <source src="./static/videos/rope_test.mp4" type="video/mp4">
               </video>
-              <p style="font-size: 125%"><b>Straighten Rope</b></p>
+              <p class="caption" style="font-size: 125%"><b>Straighten Rope</b></p>
             </div>
           </div>
           <br>
-          <br>
           <h2 class="title is-4">Experimental Results</h2>
-          <br>
           <div class="yush-div-center">
-            <img src="./static/images/sim_experiments.png" class="img-responsive" style="width: 100%; height: auto;">
+            <img src="./static/images/sim_experiments.png" class="img-responsive results-image" style="width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="real-world">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Real-World Experiments</h2>
+          <p class="content has-text-justified">
+            We conduct real-world experiments on a Franka Emika Panda robot to evaluate the performance of our method in a practical manipulation setting. The task is a rag folding task. The system is equipped with two RGB cameras: a right camera for global scene observation and a wrist camera for egocentric perception.
+          </p>
+          <p class="content has-text-justified">
+            The left figure illustrates the task setup and camera placements, while the right figure shows a video of the training process. In addition, we provide a test-time execution video played at 2× speed to demonstrate the performance of the learned policy on the real robot.
+          </p>
+          <div class="columns equal-height-columns" style="max-width: 900px; margin: 0 auto;">
+            <div class="column has-text-centered">
+              <div class="media-card" style="max-width: 100%; margin: 0 auto;">
+                <div class="media-fixed-height">
+                  <img src="./static/images/real_world.jpg" class="img-responsive" alt="Experimental Setup">
+                </div>
+                <p class="caption" style="font-size: 125%;"><b>Experimental Setup</b></p>
+              </div>
+            </div>
+            <div class="column has-text-centered">
+              <div class="media-card" style="max-width: 100%; margin: 0 auto;">
+                <div class="media-fixed-height">
+                  <video poster="" autoplay controls muted loop playsinline>
+                    <source src="./static/videos/real_world_training.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p class="caption" style="font-size: 125%;"><b>Real-World Training</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered" style="margin-top: 1rem;">
+            <div class="media-card" style="max-width: 800px; margin: 0 auto;">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%;">
+                <source src="./static/videos/real_world_test.mp4" type="video/mp4">
+              </video>
+              <p class="caption" style="font-size: 125%; margin-top: 8px;"><b>Real-World Testing (2× speed)</b></p>
+            </div>
           </div>
         </div>
       </div>
@@ -178,12 +223,12 @@
       <div class="columns is-centered">
         <div class="column is-full-width">
           <h2 class="title is-3">Conclusion</h2>
-          <!-- Experiment  -->
+          <div class="content content-wrapper">
           <p>
             Real-world reinforcement learning enables robots to improve policies from experience with human assistance, yet safety and efficiency remain major bottlenecks.
             In this work, we propose <strong>SoRLM</strong>, a soft-constrained RL framework for efficient robot manipulation under sparse rewards, guided by human interventions. <strong>SoRLM</strong> learns a state-wise Lagrange multiplier network to dynamically balance task rewards and intervention penalties. We further provide theoretical analysis of how imperfect intervention actions and signals affect policy improvement, offering insights into online learning from experience. To facilitate fair and reproducible evaluation, we introduce the first Human-in-the-Loop Robot Manipulation Benchmark (<strong>HIL-RM</strong>), which includes four challenging sparse-reward manipulation tasks. Experimental results show that <em>leveraging intervention signals can enable policies to surpass the intervention policy and achieve stronger recovery performance.</em> We will release the benchmark, checkpoints, and LeRobot-based code to support the embodied AI community future research.
           </p>
-          
+          </div>
         </div>
       </div>
     </div>
